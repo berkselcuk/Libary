@@ -1,0 +1,83 @@
+Create Database kutuphane;
+
+Create Table ogrenciler(
+ogrenci_no int primary key,
+ad varchar(25) not null,
+soyad varchar(25) not null,
+sinif tinyint not null,
+cinsiyet varchar(7) not null,
+telefon varchar(12) not null);
+
+create table kitaplar (
+kitap_id int primary key auto_increment,
+tur_id tinyint not null,
+kitap_adi varchar(40) not null,
+yazar varchar(40) not null,
+yayinevi varchar(40) not null,
+sayfa_sayisi smallint not null);
+
+Create Table kitap_turleri(
+tur_id tinyint primary key auto_increment,
+tur_adi varchar(40));
+
+create table odunc_kitaplar(
+id int primary key auto_increment,
+ogr_no int not null,
+kitap_id int not null,
+verilis_tarihi date not null,
+teslim_tarihi date,
+aciklama varchar(200));
+
+INSERT INTO kitap_turleri(tur_adi)
+VALUES("Roman"),
+("Hikaye"),
+("Şiir"),
+("Gezi"),
+("Çocuk"),
+("Kişisel Gelişim"),
+("Sağlık");
+
+INSERT INTO kitaplar(tur_id,kitap_adi,yazar,yayinevi,sayfa_sayisi)
+VALUES (1,"Kuyucaklı Yusuf","Sabahattin Ali","Deneme",221),
+(1,"Suç ve Ceza","Dostoyevski","Deneme",678),
+(1,"Beyaz Gemi","Cengiz Aytmatov","Deneme", 168),
+(1,"Sinekli Bakkal","Halide Edip Adıvar", "Örnek", 476),
+(1,"Çalıkuşu","Reşat Nuri Güntekin","Örnek",544),
+(1,"Sefiller","Victor Hugo","Örnek",520),
+(2,"Ömer Seyfettin Hikayelerinden Seçmeler","Ömer Seyfettin","Deneme",176),
+(1,"Küçük Ağa","Tarık Buğra","Deneme",477),
+(1,"Yaban","Yakup Kadri Karaosmanoğlu","Deneme",215),
+(1,"Ölü Canlar","Gogol","Örnek",484),
+(3,"Otuz Beş Yaş","Cahit Sıtkı Tarancı","Örnek",120),
+(3,"Safahat","Mehmet Akif Ersoy","Örnek",560),
+(3,"Çile","Necip Fazıl Kısakürek","Deneme",512),
+(3,"Bütük Şiirleri - Orhan Veli","Orhan Veli Kanık","Örnek",247),
+(4,"Anadolu Notları","Reşat Nuri Güntekin","Örnek",287),
+(4,"Seyehatname","Evliya Çelebi","Deneme",828);
+
+
+INSERT INTO ogrenciler(ogrenci_no,ad,soyad,sinif,cinsiyet,telefon)
+VALUES (145,"Esat","E.",11,"Erkek","066378412"),
+(460,"Yakup","B.",11,"Erkek","086306894"),
+(344,"Esra","Ö.",10,"Kız","035047841"),
+(99,"Ayşe","Y.",9,"Kız","048726589"),
+(222,"Zeynep","Ö.",10,"Kız","0472384471"),
+(188,"Ali","K.",9,"Erkek","072223641"),
+(985,"Mehmet","D.",12,"Erkek","018835412"),
+(150,"Emirhan","Ç.",11,"Erkek","059542222"),
+(555,"Ayşe","C.",11,"Kız","046378855"),
+(763,"Serhat","E.",12,"Erkek","986665748"),
+(411,"Samet","K.",10,"Erkek","887749961"),
+(461,"Serpil","K.",9,"Kız","876665561"),
+(336,"Murat","T.",11,"Erkek","999655555");
+
+INSERT INTO odunc_kitaplar(ogr_no,kitap_id,verilis_tarihi)
+VALUES (145,3,"2022-02-09"),
+(222,2,"2022-02-09"),
+(336,12,"2022-02-09"),
+(555,12,"2022-02-16"),
+(985,1,"2022-02-16"),
+(411,6,"2022-02-16"),
+(99,7,"2022-02-18"),
+(150,10,"2022-02-24"),
+(344,8,"2022-02-18");
